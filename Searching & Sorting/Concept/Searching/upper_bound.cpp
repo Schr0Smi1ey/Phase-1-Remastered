@@ -5,12 +5,20 @@ using namespace std;
 #define int long long int
 #define trace(x) cout << #x << " : " << x << endl;
 
+// Check Function
+
+bool check(int *arr, int mid, int x) {
+    return arr[mid] > x;
+}
+bool check(vector<int>& arr,int mid, int x) {
+    return arr[mid] > x;
+}
 // Upper Bound Function for array
 int upper(int *arr, int n, int x) {
     int low = 0, high = n - 1, ans = -1;
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        if (arr[mid] > x) {
+        if (check(arr, mid, x)) {
             ans = mid;
             high = mid - 1;
         }
@@ -26,7 +34,7 @@ int upper(vector<int>& arr, int n, int x) {
     int low = 0, high = n - 1, ans = -1;
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        if (arr[mid] > x) {
+        if (check(arr, mid, x)) {
             ans = mid;
             high = mid - 1;
         }
